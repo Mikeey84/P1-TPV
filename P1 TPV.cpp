@@ -99,6 +99,7 @@ bool leerAlquileres(ListaAlquileres& listaAlquileres, ListaCoches& listaCoches)
 	else
 	{
 		entrada >> listaAlquileres.tam;
+
 		listaAlquileres.Alquiler = new Alquiler[listaAlquileres.tam];
 		int i = 0;
 		while (!entrada.eof() && i < listaAlquileres.tam)
@@ -111,14 +112,14 @@ bool leerAlquileres(ListaAlquileres& listaAlquileres, ListaCoches& listaCoches)
 			//cout << listaAlquileres.Alquiler[i].código << " " << listaAlquileres.Alquiler[i].fecha << " " << listaAlquileres.Alquiler[i].días << "\n";
 
 
-
-			if (buscarCoche(listaCoches, listaAlquileres.Alquiler[i].código) == -1)
+			int indice = buscarCoche(listaCoches, listaAlquileres.Alquiler[i].código);
+			if (indice == -1)
 			{
 				listaAlquileres.Alquiler[i].Coche = nullptr;
 			}
 			else
 			{
-				listaAlquileres.Alquiler[i].Coche = &listaCoches.Coche[buscarCoche(listaCoches, listaAlquileres.Alquiler[i].código)];
+				listaAlquileres.Alquiler[i].Coche = &listaCoches.Coche[indice];
 			}
 
 			i++;
@@ -128,20 +129,24 @@ bool leerAlquileres(ListaAlquileres& listaAlquileres, ListaCoches& listaCoches)
 	return true;
 }
 
+bool compare(Alquiler a, Alquiler b)
+{
+	return a.fecha < b.fecha;
+}
 
 
-void ordenarAlquileres(ListaAlquileres& listaAlquileres) {
+void ordenarAlquileres(ListaAlquileres listaAlquileres) {
 	//vector para ordenar de fechas
-	vector<Date> fechas(listaAlquileres.tam);
+	/*vector<Date> fechas(listaAlquileres.tam);*/
 
-	//Alquiler* p1 = &listaAlquileres.Alquiler[0];  /*&listaAlquileres.Alquiler[0];*/
+	//Alquiler* p1 = &listaAlquileres.Alquiler[0];  
 	//Alquiler* p2 = &listaAlquileres.Alquiler[7];
 
 	//for para rellenar el vector
-	for (int i = 0; i < listaAlquileres.tam; i++)
+	/*for (int i = 0; i < listaAlquileres.tam; i++)
 	{
 		fechas[i] = listaAlquileres.Alquiler[i].fecha;
-	}
+	}*/
 
 	//metodo que ordena de menor a mayor
 	//sort(fechas.begin(), fechas.end());
@@ -150,14 +155,23 @@ void ordenarAlquileres(ListaAlquileres& listaAlquileres) {
 	/*for (auto& elem : fechas)
 		std::cout << elem << " " << std::endl;*/
 
+	Alquiler* listaAlq = &listaAlquileres.Alquiler[0];
+	Alquiler* finAlquiler = &listaAlquileres.Alquiler[listaAlquileres.tam];
 
+	sort(listaAlq, finAlquiler, compare);
 }
 
-void mostrarAlquileres(const ListaAlquileres listaAlquileres)
+void mostrarAlquileres(const ListaAlquileres &listaAlquileres)
 {
 	for (int i = 0; i < listaAlquileres.tam; i++)
 	{
-		//cout << listaAlquileres.Alquiler[i].fecha << " " << listaAlquileres.Alquiler[i].Coche[i].nombre << " " << listaAlquileres.Alquiler[i].días << " día(s) por " << listaAlquileres.Alquiler[i].días * listaAlquileres.Alquiler[i].Coche[i].precio << " euros"  << endl;
+		/*if (buscarCoche(listaCoches, listaAlquileres.Alquiler[i].código) != -1)
+		{
+			cout << listaAlquileres.Alquiler[i].fecha << " " << listaAlquileres.Alquiler[i].Coche[i].nombre << " " << listaAlquileres.Alquiler[i].días << " día(s) por " << listaAlquileres.Alquiler[i].días * listaAlquileres.Alquiler[i].Coche[i].precio << " euros" << endl;
+		}*/
+
+
+		
 	}
 }
 
@@ -167,9 +181,22 @@ int main()
 	SetConsoleOutputCP(CP_UTF8);
 	ListaCoches listaCoches;
 	ListaAlquileres listaAlquileres;
+	
+	
+
 	bool a = leerModelos(listaCoches);
 	bool b = leerAlquileres(listaAlquileres, listaCoches);
-	ordenarAlquileres(listaAlquileres);
+
+	
+
+	//ordenarAlquileres(listaAlquileres);
+	for (int i = 0; i < listaCoches.tam; i++)
+	{
+		//cout << listaCoches.Coche[i].nombre << endl;
+
+		if(listaAlquileres.Alquiler[i].Coche != nullptr)
+		cout << listaAlquileres.Alquiler[i].Coche[i].nombre << endl;
+	}
 	mostrarAlquileres(listaAlquileres);
 
 
