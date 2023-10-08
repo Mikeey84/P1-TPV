@@ -5,6 +5,20 @@
 
 using namespace std;
 
+ListaCoches::ListaCoches() : coche(), numElems() {} //no se que hay que meter en la constructora de ListaCoches
+ListaCoches::ListaCoches(Coche* coches, int numElemes): coche(coches), numElems(numElemes){}
+
+ostream& operator<<(ostream& os, const ListaCoches& listaCoches) {
+	for (int i = 0; i < listaCoches.numElems; i++)
+	{
+		os << listaCoches.coche[i] << endl;
+	}
+	return os;
+}
+istream& operator>>(istream& in, ListaCoches& listaCoches) {
+	//no se que hay que meter en in (puede que meter un nuevo coche en la lista)
+	return in;
+}
 
 bool ListaCoches::leerModelos(ListaCoches& listaCoches)
 {
@@ -16,15 +30,17 @@ bool ListaCoches::leerModelos(ListaCoches& listaCoches)
 	if (!entrada.is_open()) return false;
 	else {
 		
-		entrada >> contador;
-		listaCoches.Coche = tam;
+		entrada >> listaCoches.numElems;
+		Coche* nuevoCoche;
+		ListaCoches listaC(nuevoCoche,listaCoches.numElems);
+		
 
 		int i = 0;
 		while (!entrada.eof() && i < listaCoches.tam)
 		{
-			entrada >> listaCoches.Coche[i].GetCódigo();
-			entrada >> listaCoches.Coche[i].GetPrecio();
-			getline(entrada, listaCoches.Coche[i].GetNombre();
+			entrada >> 
+			entrada >> 
+			Coche.getline getline(entrada, listaCoches.Coche[i].GetNombre());
 			//debug
 			/*cout << listaCoches.Coche[i].código << " " << listaCoches.Coche[i].precio << " " << listaCoches.Coche[i].nombre << "\n";*/
 			i++;

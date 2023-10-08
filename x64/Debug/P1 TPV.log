@@ -1,2 +1,25 @@
-﻿  P1 TPV.cpp
-  P1 TPV.vcxproj -> C:\Users\mineg\OneDrive\Escritorio\P1 TPV\x64\Debug\P1 TPV.exe
+﻿  Alquiler.cpp
+  Coche.cpp
+  ListaAlquileres.cpp
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.h(19,29): error C2327: 'ListaAlquileres::Alquiler': no es un nombre de tipo, elemento estático o enumerador
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.h(19,29): message : vea la declaración de 'ListaAlquileres::Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.h(20,39): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.h(20,39): error C2143: error de sintaxis: falta ',' delante de '&'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(23,19): error C2039: "Coche": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(25,24): error C2039: "GetFecha": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(28,24): error C2039: "GetFecha": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(28,57): error C2039: "Coche": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(28,96): error C2039: "GetDías": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(28,141): error C2039: "GetDías": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\ListaAlquileres.cpp(28,166): error C2039: "Coche": no es un miembro de "Alquiler"
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\Alquiler.h(8,7): message : vea la declaración de 'Alquiler'
+  ListaCoches.cpp
+  P1 TPV.cpp
+C:\Users\mineg\OneDrive\Escritorio\P1 TPV\P1 TPV.cpp(115,17): error C3861: 'buscarCoche': no se encontró el identificador
+  Generando código...

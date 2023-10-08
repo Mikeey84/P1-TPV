@@ -4,8 +4,17 @@
 #include <fstream>
 #include <windows.h>
 
+
+ostream& operator<<(ostream& os, const ListaAlquileres& listaAlquileres) {
+	for (int i = 0; i < listaAlquileres.numElems; i++)
+	{
+		os << listaAlquileres.Alquiler[i] << endl;
+	}
+	return os;
+}
+
 void ListaAlquileres::ordenarAlquileres(int numeroAlquileres) {
-	sort(Alquiler, Alquiler + numeroAlquileres);
+	sort(Alquiler, Alquiler + numeroAlquileres); //repasar si este metodo funciona o hay que pasar al metodo alquiler
 }
 void ListaAlquileres::mostrarAlquileres() {
 	for (int i = 0; i < tam; i++)
