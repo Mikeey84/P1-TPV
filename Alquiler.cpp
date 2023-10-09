@@ -28,10 +28,11 @@ ostream& operator<<(ostream& os, const Alquiler& alquiler) {
 bool Alquiler:: operator<(const Alquiler& alquiler) const {
 	return fecha < alquiler.fecha;
 }
-void Alquiler::leeAlquiler(const ListaCoches& listaCoche) {
+Alquiler Alquiler::leeAlquiler(istream& in , const ListaCoches& listaCoches) {
 	int codigo;
 	cin >> codigo;
-	coche = listaCoche.buscarCoche(codigo);
+	coche = listaCoches.buscarCoche(codigo);
 	cin >> fecha;
 	cin >> días;
+	return *this;
 }

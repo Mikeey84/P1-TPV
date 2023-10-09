@@ -5,27 +5,36 @@
 
 using namespace std;
 
-ListaCoches::ListaCoches() : numElems() {} //no se que hay que meter en la constructora de ListaCoches
-ListaCoches::ListaCoches(size_t numElemes) {
-	coches = new Coche * [numElemes];
-}
+ListaCoches::ListaCoches() : coches(coches = new Coche*[tam]), numElems(0), tam(numElems + 20) {}
+ListaCoches::ListaCoches(Coche** c, size_t numElems, size_t tam) : coches(c), numElems(numElems), tam(numElems + 20){}
 ListaCoches::~ListaCoches() {
 	for (int i = 0; i < numElems; i++) {
 		delete coches[i];
+		coches[i] = nullptr;
 	}
 	delete[] coches;
+	coches = nullptr;
 }
-
 ostream& operator<<(ostream& os, const ListaCoches& listaCoches) {
 	for (int i = 0; i < listaCoches.numElems; i++)
 	{
-		os << listaCoches.coches[i] << endl;
+		os << *listaCoches.coches[i] << endl;
 	}
 	return os;
 }
-/*ya veremos su uso*/
 istream& operator>>(istream& in, ListaCoches& listaCoches) {
+	in >> listaCoches.numElems;
+	in.ignore();
+	
 	for (int i = 0; i < listaCoches.numElems; i++) {
+		
+		int cod, prec;
+		string nombre;
+		in >> cod >> prec;
+		in.ignore();
+		getline(in, nombre);
+		
+		listaCoches.coches[i] = new Coche(cod, prec, nombre);
 	}
 	return in;
 }
@@ -34,7 +43,7 @@ istream& operator>>(istream& in, ListaCoches& listaCoches) {
 Coche* ListaCoches::buscarCoche(int código)const {
 	int centro;
 	int abajo = 0;
-	int arriba = tam;
+	int arriba = numElems;
 	//busqueda binaria de elementos con 2 auxiliares
 	while (abajo <= arriba)
 	{
@@ -51,9 +60,9 @@ Coche* ListaCoches::buscarCoche(int código)const {
 	}
 	return nullptr;
 }
-void ListaCoches::insertaCoche(Coche* nuevoCoche){
+void ListaCoches::insertaCoche(const Coche& nuevoCoche){
 	if (numElems < tam) {
-		coches[numElems] = nuevoCoche;
+		coches[numElems] = new Coche(nuevoCoche.GetCódigo(), nuevoCoche.GetPrecio(), nuevoCoche.GetNombre());
 		numElems++;
 	}
 	else cout << "Capacidad de la lista de coches llena";

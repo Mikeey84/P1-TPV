@@ -6,43 +6,22 @@
 #include <iostream>
 #include <fstream>
 
-ListaAlquileres::ListaAlquileres() : numElems(){}
-ListaAlquileres::ListaAlquileres(size_t numElems) {
-	alquileres = new Alquiler* [tam];
-}
+ListaAlquileres::ListaAlquileres() : alquileres(nullptr), numElems(0), tam(numElems) {}
+ListaAlquileres::ListaAlquileres(Alquiler* alquileres ,size_t numElems, size_t tam) : alquileres(alquileres = new Alquiler[tam] ), numElems(numElems),tam(tam) {}
 ListaAlquileres:: ~ListaAlquileres() {
-	for (int i = 0; i < numElems; i++) {
-		delete alquileres[i];
-	}
 	delete[] alquileres;
 }
-bool operator<(const Alquiler& izq, const Alquiler& der) {
-	return izq.getFecha() < der.getFecha();
-}
+//bool operator<(const Alquiler& izq, const Alquiler& der) {
+//	return izq.getFecha() < der.getFecha();
+//}
 
 /*-------------------------------------*/
-//Se como se hace, esperate a que lloegue ;P;P
-bool ListaAlquileres::leeAlquileres(const ListaCoches& listaCoches) {
-	ifstream entrada;
-	entrada.open("rent.txt");
-	if (!entrada.is_open()) {
-		return false;
+//Por terminar 
+void ListaAlquileres::leeAlquileres(istream& in, const ListaCoches& listaCoches) {
+	cin >> numElems;
+	for (int i = 0; i < numElems; i++) {
+		alquileres[i].leeAlquiler(in, listaCoches);
 	}
-	else {
-		entrada >> numElems;
-		tam = numElems + 10;
-		alquileres = new Alquiler*[tam];
-		int i = 0;
-
-		while (!entrada.eof()) {
-			/*entrada >> alquiler[i];*/
-			int index = listaCoches.buscarCoche(alquiler[i].getCoche()->GetCódigo());
-			if (index == -1) alquiler[i].getCoche(nullptr);
-			else alquiler[i].getCoche(&listaCoches.getCoche()[index]);
-		}
-		numElems++;
-	}
-	return true;
 }
 /*-----------------------------------*/
 
@@ -58,10 +37,10 @@ ostream& operator<<(ostream& os, const ListaAlquileres& listaAlquileres) {
 //Funcion que intercambia posiciones de elemntos en un array dinamico
 //Util para metodo -->>>> ordenar()
 
-void intercambiar(Alquiler** a, Alquiler** b) {
-	Alquiler* temp = *a;
-	*a = *b;
-	*b = temp;
+void intercambiar(Alquiler* a, Alquiler* b) {
+	Alquiler *temp = a;
+	a = b;
+	b = temp;
 }
 /*---------------*/
 
@@ -76,7 +55,7 @@ void ListaAlquileres::ordenar() {
 }
 void ListaAlquileres::insertaAlquiler(const Alquiler& nuevoAlquiler) {
 	if (numElems < tam) {
-		*alquileres[numElems] = nuevoAlquiler;
+		alquileres[numElems] = nuevoAlquiler;
 		numElems++;
 	}
 }

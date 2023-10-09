@@ -21,8 +21,6 @@ public:
 
 	friend istream& operator>>(istream& in, Coche& coche);
 
-	friend istream& getline(istream& in, Coche& coche);
-
 	friend ostream& operator<<(ostream& os, const Coche& coche);
 };
 

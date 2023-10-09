@@ -4,7 +4,7 @@
 #include <string>
 
 
-Coche::Coche() : código(), precio(), nombre() {}
+Coche::Coche() : código(0), precio(0), nombre("") {}
 Coche::Coche(int _código, int _precio, string _nombre) : código(_código), precio(_precio), nombre(_nombre){}
 int Coche::GetCódigo() const {
 	return código;
@@ -18,16 +18,13 @@ string Coche::GetNombre() const {
 
 istream& operator>>(istream& in, Coche& coche)
 {
-	return in >> coche.código >> coche.precio;
-}
-
-istream& getline(istream& in, Coche& coche)
-{
-	return getline(in, coche.nombre); // Utiliza getline para leer en un std::string
+	in >> coche.código >> coche.precio;
+	in.ignore();
+	getline(in, coche.nombre);
+	return in;
 }
 ostream& operator<<(ostream& os, const Coche& coche) {
-	os << coche.código << " " << coche.nombre << " por " << coche.precio << " euros/días ";
-	return os;
+	return os <<  coche.código << " " << coche.nombre << " por " << coche.precio << " euros/días ";
 }
 
 

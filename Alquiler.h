@@ -23,7 +23,7 @@ public:
 	int getCoste() const;
 
 
-	void leeAlquiler(const ListaCoches&);
+	Alquiler leeAlquiler(istream& in, const ListaCoches&);
 
 	friend ostream& operator<<(ostream& os, const Alquiler& alquiler);
 

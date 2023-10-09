@@ -9,18 +9,17 @@ using namespace std;
 class ListaAlquileres
 {
 private:
-	size_t numElems;
-	size_t tam = numElems + 10;
-	Alquiler** alquileres;
+	size_t numElems = 0;
+	size_t tam = numElems + 20;
+	Alquiler* alquileres;
 public:
 	ListaAlquileres();
-	ListaAlquileres(size_t numElems);
+	ListaAlquileres(Alquiler* alquileres, size_t numElems, size_t tam);
 	~ListaAlquileres();
 
 	void ordenar();
-	//void mostrarAlquileres();
-	void insertaAlquiler(const Alquiler& nuevoAlquiler); //no se como pillar Alquiler
-	bool leeAlquileres(const ListaCoches& listaCoches); //no se como pillar ListaCoches
+	void insertaAlquiler(const Alquiler& nuevoAlquiler); 
+	void leeAlquileres(istream& in, const ListaCoches& listaCoches);
 	
 	friend ostream& operator<<(ostream& os, const ListaAlquileres& listaAlquileres);
 };
