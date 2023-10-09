@@ -9,16 +9,17 @@ using namespace std;
 class ListaCoches
 {
 private:
-	int numElems;
-	int tam = numElems + 10;
-	Coche* coche;
+	size_t numElems;
+	size_t tam = numElems + 10;
+	Coche** coches;
 
 public:
 	ListaCoches();
-	ListaCoches(Coche* coches, int numElems);//no se que es 
-	bool leerModelos(ListaCoches& listaCoche);
-	int buscarCoche(int código);
-	void insertaCoche(Coche nuevoCoche);
+	ListaCoches(size_t numElems);//no se que es 
+	~ListaCoches();
+	//bool leerModelos(ListaCoches& listaCoche);
+	Coche* buscarCoche(int código)const;
+	void insertaCoche(Coche* nuevoCoche);
 	friend ostream& operator<<(ostream& os, const ListaCoches& listaCoches);
 	friend istream& operator>>(istream& in, ListaCoches& listaCoches);
 };

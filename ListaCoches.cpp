@@ -1,55 +1,37 @@
 #include "ListaCoches.h"
+#include"Coche.h"
 #include <fstream>
 #include <iostream>
 
 using namespace std;
 
-ListaCoches::ListaCoches() : coche(), numElems() {} //no se que hay que meter en la constructora de ListaCoches
-ListaCoches::ListaCoches(Coche* coches, int numElemes): coche(coches), numElems(numElemes){}
+ListaCoches::ListaCoches() : numElems() {} //no se que hay que meter en la constructora de ListaCoches
+ListaCoches::ListaCoches(size_t numElemes) {
+	coches = new Coche * [numElemes];
+}
+ListaCoches::~ListaCoches() {
+	for (int i = 0; i < numElems; i++) {
+		delete coches[i];
+	}
+	delete[] coches;
+}
 
 ostream& operator<<(ostream& os, const ListaCoches& listaCoches) {
 	for (int i = 0; i < listaCoches.numElems; i++)
 	{
-		os << listaCoches.coche[i] << endl;
+		os << listaCoches.coches[i] << endl;
 	}
 	return os;
 }
+/*ya veremos su uso*/
 istream& operator>>(istream& in, ListaCoches& listaCoches) {
-	//no se que hay que meter en in (puede que meter un nuevo coche en la lista)
+	for (int i = 0; i < listaCoches.numElems; i++) {
+	}
 	return in;
 }
 
-bool ListaCoches::leerModelos(ListaCoches& listaCoches)
-{
-	//apertura de txt
-	ifstream entrada;
-	entrada.open("coches.txt");
 
-	//si no se ha abierto, retorna false, si no, guarda los datos de entrada
-	if (!entrada.is_open()) return false;
-	else {
-		
-		entrada >> listaCoches.numElems;
-		Coche* nuevoCoche;
-		ListaCoches listaC(nuevoCoche,listaCoches.numElems);
-		
-
-		int i = 0;
-		while (!entrada.eof() && i < listaCoches.tam)
-		{
-			entrada >> 
-			entrada >> 
-			
-			//debug
-			/*cout << listaCoches.Coche[i].código << " " << listaCoches.Coche[i].precio << " " << listaCoches.Coche[i].nombre << "\n";*/
-			i++;
-		}
-
-	}
-	return true;
-}
-
-int ListaCoches::buscarCoche(int código) {
+Coche* ListaCoches::buscarCoche(int código)const {
 	int centro;
 	int abajo = 0;
 	int arriba = tam;
@@ -57,18 +39,23 @@ int ListaCoches::buscarCoche(int código) {
 	while (abajo <= arriba)
 	{
 		centro = (arriba + abajo) / 2;
-		if (coche[centro].GetCódigo() == código)
+		if (coches[centro]->GetCódigo() == código)
 		{
-			return centro;
+			return coches[centro];
 		}
-		else if (código < coche[centro].GetCódigo())
+		else if (código < coches[centro]->GetCódigo())
 		{
 			arriba = centro - 1;
 		}
 		else abajo = centro + 1;
 	}
-	return -1;
+	return nullptr;
 }
-void ListaCoches::insertaCoche(Coche nuevoCoche){
-	
+void ListaCoches::insertaCoche(Coche* nuevoCoche){
+	if (numElems < tam) {
+		coches[numElems] = nuevoCoche;
+		numElems++;
+	}
+	else cout << "Capacidad de la lista de coches llena";
 }
+		

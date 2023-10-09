@@ -2,6 +2,7 @@
 #include <string>
 #include "Date.h"
 #include "Coche.h"
+#include "ListaCoches.h"
 #include <iostream>
 #include <fstream>
 
@@ -22,11 +23,11 @@ public:
 	int getCoste() const;
 
 
-	//bool leeAlquiler(const ListaCoches&);
+	void leeAlquiler(const ListaCoches&);
 
 	friend ostream& operator<<(ostream& os, const Alquiler& alquiler);
 
-	istream& operator<(const Alquiler& alquiler) const;
+	bool operator<(const Alquiler& alquiler) const;
 
 };
 

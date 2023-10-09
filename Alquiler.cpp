@@ -25,4 +25,13 @@ ostream& operator<<(ostream& os, const Alquiler& alquiler) {
 	os << alquiler.fecha << " " << alquiler.coche << alquiler.días << " dia(s) por " << alquiler.getCoste() << " euros";
  	return os;
 }
-
+bool Alquiler:: operator<(const Alquiler& alquiler) const {
+	return fecha < alquiler.fecha;
+}
+void Alquiler::leeAlquiler(const ListaCoches& listaCoche) {
+	int codigo;
+	cin >> codigo;
+	coche = listaCoche.buscarCoche(codigo);
+	cin >> fecha;
+	cin >> días;
+}
