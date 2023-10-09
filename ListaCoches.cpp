@@ -1,5 +1,4 @@
 #include "ListaCoches.h"
-#include <Windows.h>
 #include <fstream>
 #include <iostream>
 
@@ -40,7 +39,7 @@ bool ListaCoches::leerModelos(ListaCoches& listaCoches)
 		{
 			entrada >> 
 			entrada >> 
-			Coche.getline getline(entrada, listaCoches.Coche[i].GetNombre());
+			
 			//debug
 			/*cout << listaCoches.Coche[i].código << " " << listaCoches.Coche[i].precio << " " << listaCoches.Coche[i].nombre << "\n";*/
 			i++;
@@ -58,15 +57,18 @@ int ListaCoches::buscarCoche(int código) {
 	while (abajo <= arriba)
 	{
 		centro = (arriba + abajo) / 2;
-		if (Coche[centro].GetCódigo() == código)
+		if (coche[centro].GetCódigo() == código)
 		{
 			return centro;
 		}
-		else if (código < Coche[centro].GetCódigo())
+		else if (código < coche[centro].GetCódigo())
 		{
 			arriba = centro - 1;
 		}
 		else abajo = centro + 1;
 	}
 	return -1;
+}
+void ListaCoches::insertaCoche(Coche nuevoCoche){
+	
 }

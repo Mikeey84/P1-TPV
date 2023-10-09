@@ -1,5 +1,4 @@
 #include "Alquiler.h"
-#include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -26,3 +25,4 @@ ostream& operator<<(ostream& os, const Alquiler& alquiler) {
 	os << alquiler.fecha << " " << alquiler.coche << alquiler.días << " dia(s) por " << alquiler.getCoste() << " euros";
  	return os;
 }
+
