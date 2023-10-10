@@ -50,3 +50,42 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.vs/P1 TPV/FileContentIndex/36c43732-9943-44af-8651-2e12af95ade3.vsidx
+.vs/P1 TPV/FileContentIndex/3f43ae3f-3745-44fa-a1f3-62a147261dc3.vsidx
+.vs/P1 TPV/FileContentIndex/689accf7-a2d8-4558-82f5-df8a599d4ae3.vsidx
+.vs/P1 TPV/FileContentIndex/a4a13503-5bc6-4d1a-a854-ea908be92bcf.vsidx
+.vs/P1 TPV/FileContentIndex/ea88e286-65b7-4348-beb3-997bdf2030ed.vsidx
+.vs/P1 TPV/v17/.suo
+.vs/P1 TPV/v17/Browse.VC.db
+.vs/P1 TPV/v17/Browse.VC.db-shm
+.vs/P1 TPV/v17/Browse.VC.opendb
+.vs/P1 TPV/v17/ipch/AutoPCH/1228db30540936f2/LISTAALQUILERES.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/1a4e5cead375eb8b/VCTMP13988_157942.LISTACOCHES.00000000.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/2f5cd4c3d63033da/LISTACOCHES.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/488e46ae1b1177eb/ALQUILER.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/be320679a0988280/COCHE.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/d7199b27a5a217d3/P1 TPV.ipch
+.vs/P1 TPV/v17/ipch/AutoPCH/e8c069dd4c8a79e/DATE.ipch
+x64/Debug/Alquiler.obj
+x64/Debug/Coche.obj
+x64/Debug/Date.obj
+x64/Debug/listaalquileres.obj.enc
+x64/Debug/ListaCoches.obj
+x64/Debug/P1 TPV.exe
+x64/Debug/P1 TPV.exe.recipe
+x64/Debug/P1 TPV.ilk
+x64/Debug/P1 TPV.log
+x64/Debug/P1 TPV.obj
+x64/Debug/P1 TPV.pdb
+x64/Debug/P1 TPV.tlog/CL.command.1.tlog
+x64/Debug/P1 TPV.tlog/Cl.items.tlog
+x64/Debug/P1 TPV.tlog/CL.read.1.tlog
+x64/Debug/P1 TPV.tlog/CL.write.1.tlog
+x64/Debug/P1 TPV.tlog/link.command.1.tlog
+x64/Debug/P1 TPV.tlog/link.read.1.tlog
+x64/Debug/P1 TPV.tlog/link.write.1.tlog
+x64/Debug/P1 TPV.tlog/P1 TPV.lastbuildstate
+x64/Debug/P1 TPV.tlog/unsuccessfulbuild
+x64/Debug/P1 TPV.vcxproj.FileListAbsolute.txt
+x64/Debug/vc143.idb
+x64/Debug/vc143.pdb

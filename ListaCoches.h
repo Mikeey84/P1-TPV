@@ -19,7 +19,7 @@ public:
 	~ListaCoches();
 	//bool leerModelos(ListaCoches& listaCoche);
 	Coche* buscarCoche(int código)const;
-	void insertaCoche(const Coche&);
+	bool insertaCoche(const Coche&);
 	friend ostream& operator<<(ostream& os, const ListaCoches& listaCoches);
 	friend istream& operator>>(istream& in, ListaCoches& listaCoches);
 };

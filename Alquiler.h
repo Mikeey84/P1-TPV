@@ -9,9 +9,10 @@
 class Alquiler
 {
 private:
+	Coche* coche;
 	int días;
 	Date fecha;
-	Coche* coche;
+	
 
 public:
 	Alquiler();
@@ -23,7 +24,7 @@ public:
 	int getCoste() const;
 
 
-	Alquiler leeAlquiler(istream& in, const ListaCoches&);
+	void leeAlquiler(istream& in, const ListaCoches&);
 
 	friend ostream& operator<<(ostream& os, const Alquiler& alquiler);
 

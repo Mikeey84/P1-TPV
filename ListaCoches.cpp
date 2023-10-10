@@ -41,30 +41,40 @@ istream& operator>>(istream& in, ListaCoches& listaCoches) {
 
 
 Coche* ListaCoches::buscarCoche(int código)const {
-	int centro;
-	int abajo = 0;
-	int arriba = numElems;
+	int izq = 0, der = numElems - 1;
 	//busqueda binaria de elementos con 2 auxiliares
-	while (abajo <= arriba)
+	while (izq <= der)
 	{
-		centro = (arriba + abajo) / 2;
+		int centro = izq + (der - izq) / 2;
 		if (coches[centro]->GetCódigo() == código)
 		{
 			return coches[centro];
 		}
-		else if (código < coches[centro]->GetCódigo())
+		if (código < coches[centro]->GetCódigo())
 		{
-			arriba = centro - 1;
+			der = centro - 1;
 		}
-		else abajo = centro + 1;
+		else izq = centro + 1;
 	}
 	return nullptr;
 }
-void ListaCoches::insertaCoche(const Coche& nuevoCoche){
+bool ListaCoches::insertaCoche(const Coche& nuevoCoche) {
 	if (numElems < tam) {
 		coches[numElems] = new Coche(nuevoCoche.GetCódigo(), nuevoCoche.GetPrecio(), nuevoCoche.GetNombre());
+		int i = numElems;
+		while (coches[i]->GetCódigo() < coches[i - 1]->GetCódigo() && i > 0) {
+			Coche* aux = coches[i - 1];
+			coches[i - 1] = coches[i];
+			coches[i] = aux;
+			if(i > 1)i--;
+			
+		}
 		numElems++;
+		return true;
 	}
-	else cout << "Capacidad de la lista de coches llena";
+	else {
+		cout << "Capacidad de la lista de coches llena";
+		return false;
+	}
 }
 		

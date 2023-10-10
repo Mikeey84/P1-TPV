@@ -6,10 +6,15 @@
 #include <iostream>
 #include <fstream>
 
-ListaAlquileres::ListaAlquileres() : alquileres(nullptr), numElems(0), tam(numElems) {}
-ListaAlquileres::ListaAlquileres(Alquiler* alquileres ,size_t numElems, size_t tam) : alquileres(alquileres = new Alquiler[tam] ), numElems(numElems),tam(tam) {}
+ListaAlquileres::ListaAlquileres() : alquileres(alquileres = new Alquiler*[tam]), numElems(0), tam(numElems + 20) {}
+ListaAlquileres::ListaAlquileres(Alquiler** alquileres ,size_t numElems, size_t tam) : alquileres(alquileres), numElems(numElems),tam(numElems + 20 ) {}
 ListaAlquileres:: ~ListaAlquileres() {
+	for (int i = 0; i < numElems; i++) {
+		delete alquileres[i];
+		alquileres[i] = nullptr;
+	}
 	delete[] alquileres;
+	alquileres = nullptr;
 }
 //bool operator<(const Alquiler& izq, const Alquiler& der) {
 //	return izq.getFecha() < der.getFecha();
@@ -18,9 +23,18 @@ ListaAlquileres:: ~ListaAlquileres() {
 /*-------------------------------------*/
 //Por terminar 
 void ListaAlquileres::leeAlquileres(istream& in, const ListaCoches& listaCoches) {
-	cin >> numElems;
-	for (int i = 0; i < numElems; i++) {
-		alquileres[i].leeAlquiler(in, listaCoches);
+	in >> numElems;
+	in.ignore();
+	for (int i = 0; i <= numElems; i++) {
+		int codigo;
+		Coche* co;
+		Date f;
+		int d;
+		in >> codigo;
+		co = listaCoches.buscarCoche(codigo);
+		in >> f;
+		in >> d;
+		alquileres[i] = new Alquiler(co, f, d);
 	}
 }
 /*-----------------------------------*/
@@ -28,7 +42,7 @@ void ListaAlquileres::leeAlquileres(istream& in, const ListaCoches& listaCoches)
 ostream& operator<<(ostream& os, const ListaAlquileres& listaAlquileres) {
 	for (int i = 0; i < listaAlquileres.numElems; i++)
 	{
-		os << listaAlquileres.alquileres[i] << endl;
+		os << *listaAlquileres.alquileres[i] << endl;
 	}
 	return os;
 }
@@ -37,7 +51,7 @@ ostream& operator<<(ostream& os, const ListaAlquileres& listaAlquileres) {
 //Funcion que intercambia posiciones de elemntos en un array dinamico
 //Util para metodo -->>>> ordenar()
 
-void intercambiar(Alquiler* a, Alquiler* b) {
+void intercambiar(Alquiler*& a, Alquiler*& b) {
 	Alquiler *temp = a;
 	a = b;
 	b = temp;
@@ -45,17 +59,25 @@ void intercambiar(Alquiler* a, Alquiler* b) {
 /*---------------*/
 
 void ListaAlquileres::ordenar() {
+
 	for (int i = 0; i < numElems - 1; i++) {
-		int minIndex = i;
-		for (int j = i + 1; j < numElems; j++) {
-			if (alquileres[j] < alquileres[minIndex]) minIndex = j;
+		
+		for (int j = 0; j < numElems - i - 1; j++) {
+			if (*alquileres[j+1] < *alquileres[j])
+				intercambiar(alquileres[j], alquileres[j + 1]);
 		}
-		if (minIndex != i) intercambiar(&alquileres[i], &alquileres[minIndex]);
 	}
+	
 }
-void ListaAlquileres::insertaAlquiler(const Alquiler& nuevoAlquiler) {
+bool ListaAlquileres::insertaAlquiler(const Alquiler& nuevoAlquiler) {
 	if (numElems < tam) {
-		alquileres[numElems] = nuevoAlquiler;
+		*alquileres[numElems] = nuevoAlquiler;
 		numElems++;
+		ordenar();
+		return true;
+	}
+	else {
+		cout << "No caben más alquileres";
+		return false;
 	}
 }

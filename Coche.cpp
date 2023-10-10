@@ -24,7 +24,7 @@ istream& operator>>(istream& in, Coche& coche)
 	return in;
 }
 ostream& operator<<(ostream& os, const Coche& coche) {
-	return os <<  coche.código << " " << coche.nombre << " por " << coche.precio << " euros/días ";
+	return os <<  coche.código << " " << coche.nombre << " por " << coche.precio << " euros/dias ";
 }
 
 
