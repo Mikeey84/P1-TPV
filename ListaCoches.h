@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #pragma once
 #include "Coche.h"
 #include <string>
@@ -15,7 +17,6 @@ private:
 
 public:
 	ListaCoches();
-	ListaCoches(Coche** c, size_t numElems, size_t tam);//no se que es 
 	~ListaCoches();
 	//bool leerModelos(ListaCoches& listaCoche);
 	Coche* buscarCoche(int código)const;

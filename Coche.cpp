@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #include "Coche.h"
 #include <iostream>
 #include <fstream>

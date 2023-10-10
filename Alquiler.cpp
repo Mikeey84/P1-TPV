@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #include "Alquiler.h"
 #include <iostream>
 #include <fstream>

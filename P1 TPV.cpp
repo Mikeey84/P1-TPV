@@ -1,5 +1,5 @@
-// TPV Práctica1.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+// TPV Práctica2.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
 
 #include <algorithm>
 #include <iostream>
@@ -95,8 +95,8 @@ int main()
 	//Fin bucle ppal
 	
 	//Borra arrays dinamicos de memoria y los punteros que contienen
-	listaCoches.~ListaCoches();
-	listaAlquileres.~ListaAlquileres();
+	
+	
 
 
 	return 0;

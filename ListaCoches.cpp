@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #include "ListaCoches.h"
 #include"Coche.h"
 #include <fstream>
@@ -5,8 +7,8 @@
 
 using namespace std;
 
-ListaCoches::ListaCoches() : coches(coches = new Coche*[tam]), numElems(0), tam(numElems + 20) {}
-ListaCoches::ListaCoches(Coche** c, size_t numElems, size_t tam) : coches(c), numElems(numElems), tam(numElems + 20){}
+ListaCoches::ListaCoches() : coches(nullptr), numElems(0), tam(numElems + 20) {}
+
 ListaCoches::~ListaCoches() {
 	for (int i = 0; i < numElems; i++) {
 		delete coches[i];
@@ -24,6 +26,7 @@ ostream& operator<<(ostream& os, const ListaCoches& listaCoches) {
 }
 istream& operator>>(istream& in, ListaCoches& listaCoches) {
 	in >> listaCoches.numElems;
+	listaCoches.coches = new Coche* [listaCoches.tam];
 	in.ignore();
 	
 	for (int i = 0; i < listaCoches.numElems; i++) {
@@ -60,7 +63,7 @@ Coche* ListaCoches::buscarCoche(int código)const {
 }
 bool ListaCoches::insertaCoche(const Coche& nuevoCoche) {
 	if (numElems < tam) {
-		coches[numElems] = new Coche(nuevoCoche.GetCódigo(), nuevoCoche.GetPrecio(), nuevoCoche.GetNombre());
+		coches[numElems] = new Coche(nuevoCoche);
 		int i = numElems;
 		while (coches[i]->GetCódigo() < coches[i - 1]->GetCódigo() && i > 0) {
 			Coche* aux = coches[i - 1];

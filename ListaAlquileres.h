@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #pragma once
 #include "Alquiler.h"
 #include "ListaCoches.h"
@@ -15,7 +17,6 @@ private:
 	Alquiler** alquileres;
 public:
 	ListaAlquileres();
-	ListaAlquileres(Alquiler** alquileres, size_t numElems, size_t tam);
 	~ListaAlquileres();
 
 	void ordenar();

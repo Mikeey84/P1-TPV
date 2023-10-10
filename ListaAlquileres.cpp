@@ -1,3 +1,5 @@
+// Marcos Perez y Miguel Angel Lopez - Grupo 10
+
 #include "ListaAlquileres.h"
 #include "ListaCoches.h"
 #include "Alquiler.h"
@@ -6,8 +8,8 @@
 #include <iostream>
 #include <fstream>
 
-ListaAlquileres::ListaAlquileres() : alquileres(alquileres = new Alquiler*[tam]), numElems(0), tam(numElems + 20) {}
-ListaAlquileres::ListaAlquileres(Alquiler** alquileres ,size_t numElems, size_t tam) : alquileres(alquileres), numElems(numElems),tam(numElems + 20 ) {}
+ListaAlquileres::ListaAlquileres() : alquileres(nullptr), numElems(0), tam(numElems + 20) {}
+
 ListaAlquileres:: ~ListaAlquileres() {
 	for (int i = 0; i < numElems; i++) {
 		delete alquileres[i];
@@ -24,6 +26,7 @@ ListaAlquileres:: ~ListaAlquileres() {
 //Por terminar 
 void ListaAlquileres::leeAlquileres(istream& in, const ListaCoches& listaCoches) {
 	in >> numElems;
+	alquileres = new Alquiler * [tam];
 	in.ignore();
 	for (int i = 0; i <= numElems; i++) {
 		int codigo;
@@ -71,7 +74,7 @@ void ListaAlquileres::ordenar() {
 }
 bool ListaAlquileres::insertaAlquiler(const Alquiler& nuevoAlquiler) {
 	if (numElems < tam) {
-		*alquileres[numElems] = nuevoAlquiler;
+		alquileres[numElems] = new Alquiler(nuevoAlquiler);
 		numElems++;
 		ordenar();
 		return true;
